@@ -1,0 +1,9 @@
+<table>
+  <tbody id="todos">
+    <% todos.each do |todo| %>
+      <%= erb(:'todos/item', locals: { todo: todo }) %>
+    <% end %>
+  </tbody>
+</table>
+
+<button hx-post="/todos" hx-target="#todos" hx-swap="beforeend">Add Todo</button>

@@ -1,0 +1,17 @@
+<tr id="todo-<%= todo[:id] %>">
+  <td><%= todo[:description] %></td>
+  <td>
+    <button
+       hx-get="/todos/<%= todo[:id] %>/edit"
+       hx-swap="outerHTML"
+       hx-target="#todo-<%= todo[:id] %>">
+      Edit
+    </button>
+    <button
+       hx-delete="/todos/<%= todo[:id] %>"
+       hx-swap="outerHTML"
+       hx-target="#todo-<%= todo[:id] %>">
+      &times;
+    </button>
+  </td>
+</tr>

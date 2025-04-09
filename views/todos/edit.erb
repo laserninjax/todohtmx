@@ -1,0 +1,12 @@
+<tr id="todo-<%= todo[:id] %>">
+  <td><input name="description" type="text" value="<%= todo[:description] %>" /></td>
+  <td>
+    <button
+        hx-patch="/todos/<%= todo[:id] %>"
+        hx-swap="outerHTML"
+        hx-target="#todo-<%= todo[:id] %>"
+        hx-include="closest tr">
+      Save
+    </button>
+  </td>
+</tr>
