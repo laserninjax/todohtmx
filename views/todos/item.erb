@@ -1,17 +1,31 @@
-<tr id="todo-<%= todo[:id] %>">
-  <td><%= todo[:description] %></td>
-  <td>
+<li id="todo-<%= todo.id %>" class="todo <%= 'done' if todo.done %>">
+  <a
+      hx-on="click"
+      hx-post="/todos/<%= todo.id %>/toggle"
+      hx-swap="outerHTML"
+      hx-target="closest li"
+      class="todo-check <%= 'done' if todo.done %>">✓
+  </a>
+  <span hx-get="/todos/<%= todo.id %>/edit"
+        hx-swap="outerHTML"
+        hx-target="#todo-<%= todo.id %>"
+        class="todo-description">
+    <%= todo.description %>
+  </span>
+  <span class="todo-controls">
     <button
-       hx-get="/todos/<%= todo[:id] %>/edit"
+       hx-get="/todos/<%= todo.id %>/edit"
        hx-swap="outerHTML"
-       hx-target="#todo-<%= todo[:id] %>">
+       hx-target="#todo-<%= todo.id %>">
       Edit
     </button>
     <button
-       hx-delete="/todos/<%= todo[:id] %>"
-       hx-swap="outerHTML"
-       hx-target="#todo-<%= todo[:id] %>">
+       hx-delete="/todos/<%= todo.id %>"
+       hx-swap="outerHTML swap:0.3s"
+       hx-target="closest li"
+       onclick="htmx.addClass(htmx.find('#todo-<%= todo.id %>'), 'deleted');"
+       class="white">
       &times;
     </button>
-  </td>
-</tr>
+  </span>
+</li>

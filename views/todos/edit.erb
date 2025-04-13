@@ -1,12 +1,25 @@
-<tr id="todo-<%= todo[:id] %>">
-  <td><input name="description" type="text" value="<%= todo[:description] %>" /></td>
-  <td>
+<li id="todo-<%= todo.id %>" class="todo">
+  <a class="todo-check <%= 'done' if todo.done %>">
+    ✓
+  </a>
+  <span>
+    <input hx-patch="/todos/<%= todo.id %>"
+           hx-on="blur"
+           hx-swap="outerHTML"
+           hx-target="#todo-<%= todo.id %>"
+           hx-include="closest li"
+           name="description"
+           type="text" value="<%= todo.description %>"
+           onfocus="const value = this.value; this.value = ''; this.value = value"
+           autofocus="on">
+  </span>
+  <span class="todo-controls">
     <button
-        hx-patch="/todos/<%= todo[:id] %>"
+        hx-patch="/todos/<%= todo.id %>"
         hx-swap="outerHTML"
-        hx-target="#todo-<%= todo[:id] %>"
-        hx-include="closest tr">
+        hx-target="#todo-<%= todo.id %>"
+        hx-include="closest li">
       Save
     </button>
-  </td>
-</tr>
+  </span>
+</li>

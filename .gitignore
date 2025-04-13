@@ -1,0 +1,3 @@
+./config/database.yml
+.db/development.*
+./db.sqlite3
