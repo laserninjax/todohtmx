@@ -95,3 +95,18 @@ ul li.todo:hover span.todo-controls {
 ul li.todo.done .todo-description {
   text-decoration: line-through;
 }
+
+.todo-count span {
+  display: inline-block;
+  border-radius: .2rem;
+  background: #fff;
+  color: #000;
+  padding: .5rem;
+  margin: .5rem 0;
+}
+
+.todo-count.all-done span {
+  background: #ff1063;
+  color: #fff;
+  font-weight: bold;
+}

@@ -1,4 +1,5 @@
 <div id="todos-wrapper">
+  <%= erb(:'todos/count', locals: { count: todos.length, done_count: todos.count { |t| t.done } }) %>
   <ul id="todos">
     <% todos.each do |todo| %>
       <%= erb(:'todos/item', locals: { todo: todo }) %>
