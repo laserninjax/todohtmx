@@ -1,0 +1,7 @@
+<div hx-get="/todos/count"
+     hx-swap="outerHTML"
+     hx-trigger="reloadCount"
+     id="todoCount"
+     class="todo-count <%= 'all-done' if done_count == count %>">
+  <span><%= done_count %> / <%= count %></span>
+</div>
